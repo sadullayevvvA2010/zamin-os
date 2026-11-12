@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAMIN OS — Boshqaruv paneli</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/components.css" />
+</head>
+<body>
+  <div id="appShell" class="app-shell">
+    <!-- YON PANEL -->
+    <aside id="sidebar" class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-logo sm">Z</div>
+        <span class="brand-name">ZAMIN OS</span>
+      </div>
+      <nav class="sidebar-nav" id="sidebarNav">
+        <a href="#dashboard" class="nav-item" data-page="dashboard"><span class="ico">📊</span><span data-i18n="nav_dashboard">Boshqaruv paneli</span></a>
+        <a href="#sales" class="nav-item" data-page="sales"><span class="ico">💰</span><span data-i18n="nav_sales">Savdo</span></a>
+        <a href="#orders" class="nav-item" data-page="orders"><span class="ico">🧾</span><span data-i18n="nav_orders">Buyurtmalar</span></a>
+        <a href="#products" class="nav-item" data-page="products"><span class="ico">📦</span><span data-i18n="nav_products">Mahsulotlar</span></a>
+        <a href="#categories" class="nav-item" data-page="categories"><span class="ico">🏷️</span><span data-i18n="nav_categories">Kategoriyalar</span></a>
+        <a href="#inventory" class="nav-item" data-page="inventory"><span class="ico">🏬</span><span data-i18n="nav_inventory">Ombor</span></a>
+        <a href="#finance" class="nav-item" data-page="finance"><span class="ico">💵</span><span data-i18n="nav_finance">Moliya</span></a>
+        <a href="#reports" class="nav-item" data-page="reports"><span class="ico">📈</span><span data-i18n="nav_reports">Hisobotlar</span></a>
+        <a href="#branches" class="nav-item" data-page="branches"><span class="ico">🏢</span><span data-i18n="nav_branches">Filiallar</span></a>
+        <a href="#employees" class="nav-item" data-page="employees"><span class="ico">👥</span><span data-i18n="nav_employees">Xodimlar</span></a>
+        <a href="#suppliers" class="nav-item" data-page="suppliers"><span class="ico">🚚</span><span data-i18n="nav_suppliers">Yetkazib beruvchilar</span></a>
+        <a href="#purchases" class="nav-item" data-page="purchases"><span class="ico">🛒</span><span data-i18n="nav_purchases">Xaridlar</span></a>
+        <a href="#notifications" class="nav-item" data-page="notifications"><span class="ico">🔔</span><span data-i18n="nav_notifications">Bildirishnomalar</span><span id="notifBadge" class="badge">0</span></a>
+        <a href="#ai" class="nav-item" data-page="ai"><span class="ico">🤖</span><span data-i18n="nav_ai">ZAMIN AI</span></a>
+        <a href="#profile" class="nav-item" data-page="profile"><span class="ico">👤</span><span data-i18n="nav_profile">Profil</span></a>
+        <a href="#settings" class="nav-item" data-page="settings"><span class="ico">⚙️</span><span data-i18n="nav_settings">Sozlamalar</span></a>
+      </nav>
+      <div class="sidebar-footer" style="text-align:center; color:#94A3B8; font-size:12px;">
+        Demo versiya
+      </div>
+    </aside>
+
+    <!-- ASOSIY QISM -->
+    <div class="main-area">
+      <header class="topbar">
+        <button id="sidebarToggle" class="icon-btn" aria-label="Menyu">☰</button>
+        <div class="global-search">
+          <input type="text" id="globalSearch" data-i18n="search_placeholder" placeholder="Qidiruv: buyurtma, mahsulot, mijoz..." />
+        </div>
+        <div class="topbar-right">
+          <button id="themeToggle" class="icon-btn" title="Tungi/Kunduzgi rejim">🌙</button>
+          <div class="lang-switcher" aria-label="Language selector">
+            <button type="button" class="lang-btn" data-lang="uz">UZ</button>
+            <button type="button" class="lang-btn" data-lang="ru">RU</button>
+            <button type="button" class="lang-btn" data-lang="en">EN</button>
+          </div>
+          <div class="demo-badge" data-i18n="demo_badge">DEMO</div>
+          <div class="user-info">
+            <div class="user-avatar" id="userAvatar">A</div>
+            <div class="user-meta">
+              <span id="userName">Admin</span>
+              <small id="userRole">Bosh administrator</small>
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main id="pageContent" class="page-content"></main>
+    </div>
+  </div>
+
+  <div id="toastContainer" class="toast-container"></div>
+  <div id="modalRoot"></div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/ui.js"></script>
+  
+  <script src="assets/js/pages/dashboard.js"></script>
+  <script src="assets/js/pages/sales.js"></script>
+  <script src="assets/js/pages/orders.js"></script>
+  <script src="assets/js/pages/products.js"></script>
+  <script src="assets/js/pages/categories.js"></script>
+  <script src="assets/js/pages/inventory.js"></script>
+  <script src="assets/js/pages/finance.js"></script>
+  <script src="assets/js/pages/reports.js"></script>
+  <script src="assets/js/pages/branches.js"></script>
+  <script src="assets/js/pages/employees.js"></script>
+  <script src="assets/js/pages/suppliers.js"></script>
+  <script src="assets/js/pages/purchases.js"></script>
+  <script src="assets/js/pages/notifications.js"></script>
+  <script src="assets/js/pages/ai.js"></script>
+  <script src="assets/js/pages/profile.js"></script>
+  <script src="assets/js/pages/settings.js"></script>
+
+  <script>
+    const db = DB.get();
+    if (!db.session) {
+      db.session = { userId: 1, loginAt: new Date().toISOString() };
+      DB.save(db);
+    }
+  </script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

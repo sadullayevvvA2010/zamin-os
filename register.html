@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAMIN OS — Ro'yxatdan o'tish</title>
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <link rel="stylesheet" href="assets/css/auth.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    <div class="auth-brand">
+      <div class="brand-logo">Z</div>
+      <h1>ZAMIN OS</h1>
+      <p data-i18n="auth_company">Biznes boshqaruv platformasi</p>
+    </div>
+
+    <form id="registerForm" class="auth-card" novalidate>
+      <div class="lang-switcher auth-lang-switcher" aria-label="Language selector">
+        <button type="button" class="lang-btn" data-lang="uz">UZ</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <h2 data-i18n="auth_register_title">Ro'yxatdan o'tish</h2>
+      <p class="auth-subtitle" data-i18n="auth_register_subtitle">Yangi korxona yaratish uchun ma'lumotlarni kiriting</p>
+
+      <div class="form-group">
+        <label for="regName" data-i18n="auth_full_name">To'liq ism</label>
+        <input type="text" id="regName" placeholder="Ism Familiya" required />
+        <span class="error-msg" id="regNameErr"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="regEmail" data-i18n="auth_email">Email</label>
+        <input type="email" id="regEmail" placeholder="email@example.uz" required />
+        <span class="error-msg" id="regEmailErr"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="regOrg" data-i18n="auth_company_name">Korxona nomi</label>
+        <input type="text" id="regOrg" placeholder="Masalan: ZAMIN Savdo" required />
+        <span class="error-msg" id="regOrgErr"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="regPassword" data-i18n="auth_password">Parol</label>
+        <input type="password" id="regPassword" placeholder="Kamida 6 ta belgi" required />
+        <span class="error-msg" id="regPasswordErr"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" data-i18n="auth_register_button">Ro'yxatdan o'tish</button>
+
+      <p class="auth-footer">
+        <span data-i18n="auth_has_account">Hisobingiz bormi?</span> <a href="login.html" data-i18n="auth_sign_in">Kirish</a>
+      </p>
+    </form>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById('registerForm').addEventListener('submit', Auth.register);
+  </script>
+</body>
+</html>

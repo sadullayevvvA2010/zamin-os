@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZAMIN OS — Kirish</title>
+  <!-- Faqat kerakli CSS fayllar -->
+  <link rel="stylesheet" href="assets/css/auth.css" />
+</head>
+<body class="auth-body">
+  <div class="auth-container">
+    
+    <div class="auth-brand">
+      <div class="brand-logo">Z</div>
+      <h1>ZAMIN OS</h1>
+      <p data-i18n="auth_company">Biznes boshqaruv platformasi</p>
+    </div>
+
+    <form id="loginForm" class="auth-card" novalidate>
+      <div class="lang-switcher auth-lang-switcher" aria-label="Language selector">
+        <button type="button" class="lang-btn" data-lang="uz">UZ</button>
+        <button type="button" class="lang-btn" data-lang="ru">RU</button>
+        <button type="button" class="lang-btn" data-lang="en">EN</button>
+      </div>
+      <h2 data-i18n="auth_login_title">Tizimga kirish</h2>
+      <p class="auth-subtitle" data-i18n="auth_login_subtitle">Hisobingizga kirish uchun ma'lumotlarni kiriting</p>
+
+      <div class="form-group">
+        <label for="loginEmail" data-i18n="auth_email">Email</label>
+        <input type="email" id="loginEmail" placeholder="admin@zamin.uz" required />
+        <span class="error-msg" id="loginEmailErr" style="color: #DC2626; font-size: 12px; display: none;"></span>
+      </div>
+
+      <div class="form-group">
+        <label for="loginPassword" data-i18n="auth_password">Parol</label>
+        <div class="password-wrap">
+          <input type="password" id="loginPassword" placeholder="••••••••" required />
+          <button type="button" class="toggle-pass" data-target="loginPassword">👁</button>
+        </div>
+        <span class="error-msg" id="loginPasswordErr" style="color: #DC2626; font-size: 12px; display: none;"></span>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block" data-i18n="auth_login_button">Kirish</button>
+
+      <div class="demo-hint">
+        <strong data-i18n="auth_demo_account">Demo akkaunt:</strong><br />
+        Email: <code>admin@zamin.uz</code><br />
+        Parol: <code>admin123</code>
+      </div>
+
+      <p class="auth-footer">
+        <span data-i18n="auth_no_account">Hisobingiz yo'qmi?</span> <a href="register.html" data-i18n="auth_sign_up">Ro'yxatdan o'tish</a>
+      </p>
+    </form>
+  </div>
+
+  <script src="assets/js/data.js"></script>
+  <script src="assets/js/i18n.js"></script>
+  <script src="assets/js/auth.js"></script>
+  <script>
+    document.getElementById('loginForm').addEventListener('submit', Auth.login);
+    document.querySelectorAll('.toggle-pass').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const inp = document.getElementById(btn.dataset.target);
+        inp.type = inp.type === 'password' ? 'text' : 'password';
+      });
+    });
+  </script>
+</body>
+</html>
